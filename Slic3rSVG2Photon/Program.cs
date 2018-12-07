@@ -2,7 +2,6 @@
 using System.Threading;
 using System.IO;
 using System.Globalization;
-using System.Xml;
 
 namespace Slic3rSVG2Photon
 {
@@ -40,18 +39,7 @@ namespace Slic3rSVG2Photon
 
         private static void ReadFile(string iNPUT)
         {
-            Out("\nReading input file...");
-
-            var svg = new XmlDocument();
-            try
-            {
-                svg.Load(INPUT);
-
-            }
-            catch (Exception e)
-            {
-                Out("Error loading file: " + e.Message);    
-            }
+            Slic3rSVGReader.ReadToBitmaps(INPUT);
         }
 
         private static void ParseArgs(string[] args)
