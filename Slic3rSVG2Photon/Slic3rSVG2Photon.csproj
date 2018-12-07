@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{94CFEE90-8574-49B2-8AC5-8F9742EBCE9C}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Slic3rSVG2PNG</RootNamespace>
-    <AssemblyName>Slic3rSVG2PNG</AssemblyName>
+    <RootNamespace>Slic3rSVG2Photon</RootNamespace>
+    <AssemblyName>Slic3rSVG2Photon</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

@@ -2,20 +2,22 @@
 using System.Threading;
 using System.IO;
 using System.Globalization;
+using System.Xml;
 
-namespace Slic3rSVG2PNG
+namespace Slic3rSVG2Photon
 {
     class Program
     {
         private static string   INPUT     = Path.GetFullPath("print.svg");
         private static string   OUTPUT    = Path.GetFullPath("out");
-        private static double   PPU       = 0.0;
+        private static string   CONFIG    = Path.GetFullPath("config");
 
         private static CultureInfo customCulture;
 
         static void Main(string[] args)
         {
             ParseArgs(args);
+            ReadConfig();
 
             //switch to international decimal separator
             customCulture = (CultureInfo)Thread.CurrentThread.CurrentCulture.Clone();
@@ -26,7 +28,30 @@ namespace Slic3rSVG2PNG
             Out("Program run with: ");
             Out("...input file: " + INPUT);
             Out("...output path: " + OUTPUT);
-            Out("...pixel per unit ratio: " + PPU);
+
+            //Read svg and convert
+            ReadFile(INPUT);
+        }
+
+        private static void ReadConfig()
+        {
+            throw new NotImplementedException();
+        }
+
+        private static void ReadFile(string iNPUT)
+        {
+            Out("\nReading input file...");
+
+            var svg = new XmlDocument();
+            try
+            {
+                svg.Load(INPUT);
+
+            }
+            catch (Exception e)
+            {
+                Out("Error loading file: " + e.Message);    
+            }
         }
 
         private static void ParseArgs(string[] args)
@@ -44,9 +69,8 @@ namespace Slic3rSVG2PNG
                     case "--output":
                         OUTPUT = Path.GetFullPath(val);
                         break;
-                    case "--ppu":
-                        Out(val);
-                        PPU = double.Parse(val.Trim(), NumberStyles.AllowDecimalPoint, NumberFormatInfo.InvariantInfo);
+                    case "--config":
+                        CONFIG = Path.GetFullPath(val);
                         break;
                 }
             }
