@@ -21,8 +21,8 @@ namespace Slic3rSVG2Photon
             var svgFile = new XmlDocument();
             var bitmaps = new List<Bitmap>();
             
-            /*try
-            {*/
+            try
+            {
                 //load svg file and read it's dimensions
                 svgFile.Load(file);
                 XmlNode root = svgFile.DocumentElement;
@@ -42,9 +42,14 @@ namespace Slic3rSVG2Photon
                 //calculating bounds to place image in the center of screen
                 float minX = (float)((Program.BED_X - svgWidth) / 2);
                 float minY = (float)((Program.BED_Y - svgHeight) / 2);
-            
+
+                Program.Out("Rendering bitmaps...");
+                Program.Out("__________________________________________________");
+
                 //for each child node create individual svg and convert it to bitmap
-                for (int i = 0; i < root.ChildNodes.Count; i++)
+                int lastCounter = 0;
+                int nodesCount = root.ChildNodes.Count;
+                for (int i = 0; i < nodesCount; i++)
                 {
                     XmlNode g = root.ChildNodes[i];
                     if(g.Name == "g")
@@ -53,17 +58,44 @@ namespace Slic3rSVG2Photon
                         svgDocument.ShapeRendering = SvgShapeRendering.GeometricPrecision;
 
                         svgDocument.ViewBox = new SvgViewBox(-minX, -minY, Program.BED_X, Program.BED_Y);
-                        Bitmap bmp = svgDocument.Draw(Program.SCREEN_X, Program.SCREEN_Y);
+                        Bitmap bmpSrc = svgDocument.Draw(Program.SCREEN_X, Program.SCREEN_Y);
 
-                        
+                        //remove alpha, need to work with PhotonFileEditor
+                        var bmp = new Bitmap(bmpSrc.Size.Width, bmpSrc.Size.Height, PixelFormat.Format24bppRgb);
+                        var graph = Graphics.FromImage(bmp);
+
+                        graph.Clear(Color.Black);
+                        graph.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceOver;
+                        graph.DrawImage(bmpSrc, 0, 0);
+
+                        //saving
+                        if (Program.PNG_MODE)
+                        {
+                            string num = i.ToString();
+                            while (num.Length < 4)
+                            {
+                                num = "0" + num;
+                            }
+
+                            bmp.Save(Program.OUTPUT + "/img_" + num + ".png");
+                        }
                     }
-                    
+
+                    //show counter
+                    int currentCounter = lastCounter;
+                    lastCounter = (int)Math.Round(i * 50f / nodesCount);
+                    if(lastCounter > currentCounter)
+                    {
+                        Console.Write("█");
+                    }
                 }
-            /*}
+
+                Program.Out("\nBitmaps converted");
+            }
             catch (Exception e)
             {
                 Program.Out("Error loading file: " + e.Message);
-            }*/
+            }
 
             return bitmaps;
         }

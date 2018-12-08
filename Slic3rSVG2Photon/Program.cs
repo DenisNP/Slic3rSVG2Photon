@@ -8,7 +8,7 @@ namespace Slic3rSVG2Photon
     class Program
     {
         private static string   INPUT           = Path.GetFullPath("print.svg");
-        private static string   OUTPUT          = Path.GetFullPath("out");
+        public static string    OUTPUT           = Path.GetFullPath("out");
         private static string   CONFIG          = Path.GetFullPath("config");
 
         public static float     BED_X           = 68.04f;
@@ -19,6 +19,8 @@ namespace Slic3rSVG2Photon
 
         public static float     NORMAL_EXP_TIME = 1f;
         public static float     BOTTOM_EXP_TIME = 50f;
+
+        public static bool      PNG_MODE        = true;
 
         private static CultureInfo customCulture;
 
