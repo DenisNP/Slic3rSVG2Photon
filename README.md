@@ -64,4 +64,4 @@ config will be default
 You can run C# .exe application using [Mono](https://www.mono-project.com/), but I haven't tested it. Please, if you test, send me PR with your addition to this README.
 
 # TODO #
-Write `PNG > .photon` conversion to get rid of PhotonFileEditor.
+Write `PNG > .photon` conversion to get rid of PhotonFileEditor. You can help me with this if you brave enough to go deep into .photon format deconstruction which present [here](https://github.com/Photonsters/PhotonFileEditor/blob/master/PhotonFile.py)
