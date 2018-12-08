@@ -1,4 +1,4 @@
-**Slic3rSVG2Photon** is a C# console application which can convert SVG file produced by [Slic3r](https://slic3r.org/) to sequence of PNG images requred for [PhotonFileEditor](https://github.com/Photonsters/PhotonFileEditor).
+**Slic3rSVG2Photon** is a C# console application which can convert SVG file produced by [Slic3r](https://slic3r.org/) to sequence of PNG images required for [PhotonFileEditor](https://github.com/Photonsters/PhotonFileEditor).
 
 # What? #
 There is very cool and cheap DLP 3D printer **Anycubic Photon**. Unfortunately, it has its own proprietary `.photon` format. Official **ANYCUBIC Photon Slicer** software can convert classic STL files to `.photon`, but it has very poor functionality. E.g. it has no such useful property like **infill** and many others.
