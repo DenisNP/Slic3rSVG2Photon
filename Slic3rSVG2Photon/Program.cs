@@ -45,7 +45,37 @@ namespace Slic3rSVG2Photon
 
         private static void ReadConfig()
         {
+            if (!File.Exists(CONFIG)) return;
 
+            var lines = File.ReadLines(CONFIG);
+            foreach(var line in lines)
+            {
+                string[] pars = line.Split('=');
+                if(pars.Length == 2)
+                {
+                    string key = pars[0];
+                    string val = pars[1];
+
+                    switch(key)
+                    {
+                        case "BED_X":
+                            BED_X = float.Parse(val, NumberStyles.Any, CultureInfo.InvariantCulture);
+                            break;
+                        case "BED_Y":
+                            BED_Y = float.Parse(val, NumberStyles.Any, CultureInfo.InvariantCulture);
+                            break;
+                        case "BED_Z":
+                            BED_Z = float.Parse(val, NumberStyles.Any, CultureInfo.InvariantCulture);
+                            break;
+                        case "SCREEN_X":
+                            SCREEN_X = int.Parse(val);
+                            break;
+                        case "SCREEN_Y":
+                            SCREEN_Y = int.Parse(val);
+                            break;
+                    }
+                }
+            }
         }
 
         private static void ReadFile(string iNPUT)
