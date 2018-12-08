@@ -54,7 +54,7 @@ config will be default
 
 ## Running application ##
 ### Windows ###
-1. Download of compile binary. Lastest binary is in [bin/Release](https://github.com/DenisNP/Slic3rSVG2Photon/tree/master/Slic3rSVG2Photon/bin/Release) folder
+1. Download or compile binary. Lastest binary is in [bin/Release](https://github.com/DenisNP/Slic3rSVG2Photon/tree/master/Slic3rSVG2Photon/bin/Release) folder
 2. Open **cmd.exe** or **Windows PowerShell**
 3. `cd` to application directory
 4. Run `./Slic3rSVG2Photon.exe --input PATH_TO.svg --output OUT_FOLDER`
