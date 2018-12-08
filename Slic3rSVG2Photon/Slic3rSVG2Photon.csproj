@@ -48,12 +48,9 @@
   <ItemGroup>
     <Compile Include="PhotonFileContainer.cs" />
     <Compile Include="PhotonFile\PFLayerMeta.cs" />
-    <Compile Include="PhotonFile\PFLayerMetaContainer.cs" />
     <Compile Include="PhotonFile\PFHeader.cs" />
     <Compile Include="PhotonFile\PFLayerRaw.cs" />
-    <Compile Include="PhotonFile\PFLayerRawContainer.cs" />
     <Compile Include="PhotonFile\PFPreview.cs" />
-    <Compile Include="PhotonFile\PFPreviewContainer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Slic3rSVGReader.cs" />

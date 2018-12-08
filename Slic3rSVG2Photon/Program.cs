@@ -7,9 +7,18 @@ namespace Slic3rSVG2Photon
 {
     class Program
     {
-        private static string   INPUT     = Path.GetFullPath("print.svg");
-        private static string   OUTPUT    = Path.GetFullPath("out");
-        private static string   CONFIG    = Path.GetFullPath("config");
+        private static string   INPUT           = Path.GetFullPath("print.svg");
+        private static string   OUTPUT          = Path.GetFullPath("out");
+        private static string   CONFIG          = Path.GetFullPath("config");
+
+        public static float     BED_X           = 68.04f;
+        public static float     BED_Y           = 120.96f;
+        public static float     BED_Z           = 150f;
+        public static int       SCREEN_X        = 1440;
+        public static int       SCREEN_Y        = 2560;
+
+        public static float     NORMAL_EXP_TIME = 1f;
+        public static float     BOTTOM_EXP_TIME = 50f;
 
         private static CultureInfo customCulture;
 
@@ -34,7 +43,7 @@ namespace Slic3rSVG2Photon
 
         private static void ReadConfig()
         {
-            throw new NotImplementedException();
+
         }
 
         private static void ReadFile(string iNPUT)
