@@ -55,8 +55,7 @@ namespace Slic3rSVG2Photon
                         svgDocument.ViewBox = new SvgViewBox(-minX, -minY, Program.BED_X, Program.BED_Y);
                         Bitmap bmp = svgDocument.Draw(Program.SCREEN_X, Program.SCREEN_Y);
 
-                        bmp.Save(Path.GetFullPath(@"img.png"));
-                        break;
+                        
                     }
                     
                 }
